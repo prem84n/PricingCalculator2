@@ -83,15 +83,12 @@ const ProductConfig: React.FC<ProductConfigProps> = ({ products, cart, setCart }
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <div className="mb-6 flex items-center space-x-4">
-        <button onClick={() => navigate(-1)} className="text-slate-400 hover:text-slate-600 flex items-center space-x-1">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          <span className="text-sm font-medium">Back</span>
-        </button>
-        <h1 className="text-2xl font-bold text-slate-900">{itemId ? 'Edit' : 'Configure'} {product.name}</h1>
+    <div className="animate-in fade-in duration-500">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-slate-900">
+          {itemId ? 'Edit' : 'Configure'} <span className="text-indigo-600">{product.name}</span>
+        </h1>
+        <p className="text-sm text-slate-500 mt-1">Adjust parameters to update your cost estimate.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -126,16 +123,16 @@ const ProductConfig: React.FC<ProductConfigProps> = ({ products, cart, setCart }
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-slate-700">Quantity</label>
                 <div className="flex items-center space-x-4">
-                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-10 h-10 border border-slate-200 rounded-lg">-</button>
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-10 h-10 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">-</button>
                   <span className="w-8 text-center font-bold">{quantity}</span>
-                  <button onClick={() => setQuantity(quantity + 1)} className="w-10 h-10 border border-slate-200 rounded-lg">+</button>
+                  <button onClick={() => setQuantity(quantity + 1)} className="w-10 h-10 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">+</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm sticky top-24">
+        <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm h-fit">
           <h2 className="text-lg font-bold text-slate-900 mb-6">Summary</h2>
           <div className="pt-4 border-t border-slate-100 flex justify-between items-center mb-8">
             <span className="font-bold text-slate-900">Monthly Est:</span>
@@ -143,9 +140,15 @@ const ProductConfig: React.FC<ProductConfigProps> = ({ products, cart, setCart }
           </div>
           <button 
             onClick={handleSaveConfiguration}
-            className="w-full py-4 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200"
+            className="w-full py-4 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition-all"
           >
             {itemId ? 'Update Service' : 'Add to Estimate'}
+          </button>
+          <button 
+            onClick={() => navigate('/')}
+            className="w-full mt-4 py-3 text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-indigo-600 transition-colors"
+          >
+            Cancel & Return
           </button>
         </div>
       </div>
