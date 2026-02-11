@@ -1,0 +1,8 @@
+{
+  "name": "PricePoint2 - React-Python",
+  "description": "A comprehensive cloud services pricing calculator with multi-persona workflows for Public customers, Presales engineers, Sales Managers, and Admins.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
